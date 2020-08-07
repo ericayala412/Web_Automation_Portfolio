@@ -1,19 +1,15 @@
 require 'page-object'
+require 'rubygems'
+require 'watir'
 
 Before do
-  client = Selenium::WebDriver::Remote::Http::Default.new
-  client.open_timeout = 120 # instead of the default 60
-
-  $browser_name == :chrome
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument('disable-dev-shm-usage')
-  options.add_preference('geolocation.default_content_setting', 1)
-  @browser = Watir::Browser.new $browser_name, :options => options
+  options.add_argument('no-sandbox')
+  @browser = Watir::Browser.new :chrome, :options => options
   screen_width = @browser.execute_script('return screen.width;')
   screen_height = @browser.execute_script('return screen.height;')
-  @browser.driver.manage.window.resize_to(screen_width,screen_height)
-
-  $test_start = Time.now
+  @browser.driver.manage.window.resize_to(screen_width, screen_height)
 
   # This will set the default locale of Faker to the United States, using English.
   # For further information on locales in Faker, refer to the following link:
@@ -22,7 +18,5 @@ Before do
 end
 
 After do
-  $test_stop = Time.now
-  puts $test_stop - $test_start
   @browser.quit
 end
