@@ -8,7 +8,7 @@ Before do
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument('disable-dev-shm-usage')
   options.add_preference('geolocation.default_content_setting', 1)
-  @browser = Watir::Browser.new $browser_label, :options => options
+  @browser = Watir::Browser.new $browser_name, :options => options
   screen_width = @browser.execute_script('return screen.width;')
   screen_height = @browser.execute_script('return screen.height;')
   @browser.driver.manage.window.resize_to(screen_width,screen_height)
@@ -19,4 +19,10 @@ Before do
   # For further information on locales in Faker, refer to the following link:
   # https://github.com/faker-ruby/faker/blob/master/lib/locales/README.md
   Faker::Config.locale = 'en-US'
+end
+
+After do
+  $test_stop = Time.now
+  puts $test_stop - $test_start
+  @browser.quit
 end
