@@ -9,9 +9,13 @@ Given(/^the user goes to (.*)$/) do |site|
   end
 end
 
-When(/^blah$/) do
+When(/^the user submits a dynamic email with Faker$/) do
   on(ForgotPasswordPage) do |page|
-    page.email_field.send_keys Faker::Internet.user_name
-    puts 'yay'
+    page.email_field.send_keys Faker::Internet.email
+    page.retrieve_password_button.click
   end
+end
+
+Then(/^the Forgot Password email will be set$/) do
+  expect(@browser.text.include?("Your e-mail's been sent!")).to be true
 end

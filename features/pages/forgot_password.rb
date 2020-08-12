@@ -7,4 +7,7 @@ class ForgotPasswordPage
     @browser.input(:id, 'email')
   end
 
+  def retrieve_password_button
+    @browser.i(:class, 'icon-signin')
+  end
 end
