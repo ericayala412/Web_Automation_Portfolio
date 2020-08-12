@@ -1,3 +1,5 @@
+require 'faker'
+
 Given(/^the user goes to (.*)$/) do |site|
   case site
   when 'the Password page'
@@ -8,5 +10,8 @@ Given(/^the user goes to (.*)$/) do |site|
 end
 
 When(/^blah$/) do
-  pending
+  on(ForgotPasswordPage) do |page|
+    page.email_field.send_keys Faker::Internet.user_name
+    puts 'yay'
+  end
 end
