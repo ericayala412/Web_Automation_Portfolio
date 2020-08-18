@@ -2,8 +2,10 @@ require 'faker'
 
 Given(/^the user goes to (.*)$/) do |site|
   case site
-  when 'the Forgot Password page'
+  when 'the Internet\'s Forgot Password page'
     @browser.goto 'https://the-internet.herokuapp.com/forgot_password'
+  when 'automationpractice.com\'s My Account page'
+    @browser.goto 'http://automationpractice.com/index.php?controller=authentication&back=my-account'
   else
     raise 'Select a correct page destination from the case statement'
   end
@@ -18,4 +20,8 @@ end
 
 Then(/^the Forgot Password email will be set$/) do
   expect(@browser.text.include?("Your e-mail's been sent!")).to be true
+end
+
+When(/^the user signs up with Faker value$/) do
+  pending
 end
