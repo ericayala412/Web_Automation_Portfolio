@@ -45,7 +45,7 @@ class MyAccountPage
   # Months are January - December
   # Years are 1900 - 2020
   def date_of_birth
-    sleep 1
+    sleep 1 # Test goes to fast before selecting a dropdown item
     @browser.div(:id, 'uniform-days').options.to_a.sample.select
     @browser.div(:id, 'uniform-months').options.to_a.sample.select
     @browser.div(:id, 'uniform-years').options.to_a.sample.select
@@ -56,13 +56,49 @@ class MyAccountPage
     @browser.input(:id, 'company')
   end
 
-  # Indentifies the first Address field on the Sign Up page
+  # Identifies the first Address field on the Sign Up page
   def customer_address1
     @browser.input(:id, 'address1')
   end
 
-  # Indentifies the second Address field on the Sign Up page
+  # Identifies the second Address field on the Sign Up page
   def customer_address2
     @browser.input(:id, 'address2')
+  end
+
+  # Identifies the city field on the Sign Up page
+  def customer_city
+    @browser.input(:id, 'city')
+  end
+
+  # Helper method that selects a random US state
+  def customer_state
+    sleep 1 # Test goes too fast before selecting a state
+    @browser.div(:id, 'uniform-id_state').options.to_a.sample.select
+  end
+
+  # Identifies the zip code field on the Sign Up page
+  def customer_zip
+    @browser.input(:id, 'postcode')
+  end
+
+  # Identifies the "Additional Information" section of the Sign Up page
+  def additional_information
+    @browser.textarea(:id, 'other')
+  end
+
+  # Identifies the home phone field on the Sign Up page
+  def customer_home_phone
+    @browser.input(:id, 'phone')
+  end
+
+  # Identifies the mobile phone field on the Sign Up page
+  def customer_mobile_phone
+    @browser.input(:id, 'phone_mobile')
+  end
+
+  # Defines the Register button on the Sign Up page
+  def register_button
+    @browser.button(:id, 'submitAccount')
   end
 end

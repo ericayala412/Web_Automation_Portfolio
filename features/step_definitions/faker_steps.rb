@@ -42,6 +42,13 @@ When(/^the user signs up with Faker values$/) do
     page.customer_company.send_keys Faker::Music::Phish.song + ' Inc.'
     page.customer_address1.send_keys Faker::Address.street_address
     page.customer_address2.send_keys Faker::Address.secondary_address
+    page.customer_city.send_keys Faker::Address.city
+    page.customer_state
+    page.customer_zip.send_keys Faker::Address.zip_code(state_abbreviation: 'NC') # This site only accepts 5 digits zip codes
+    page.additional_information.send_keys Faker::Movies::BackToTheFuture.quote
+    page.customer_home_phone.send_keys Faker::PhoneNumber.cell_phone_in_e164
+    page.customer_mobile_phone.send_keys Faker::PhoneNumber.cell_phone
+    page.register_button.click
   end
 end
 
