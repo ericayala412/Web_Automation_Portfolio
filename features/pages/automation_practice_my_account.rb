@@ -39,4 +39,30 @@ class MyAccountPage
   def customer_password
     @browser.input(:id, 'passwd')
   end
+
+  # Helper method that selects random values from the Date Of Birth dropdowns:
+  # Days are 1 - 30
+  # Months are January - December
+  # Years are 1900 - 2020
+  def date_of_birth
+    sleep 1
+    @browser.div(:id, 'uniform-days').options.to_a.sample.select
+    @browser.div(:id, 'uniform-months').options.to_a.sample.select
+    @browser.div(:id, 'uniform-years').options.to_a.sample.select
+  end
+
+  # Identifies the Company field on the Sign Up page
+  def customer_company
+    @browser.input(:id, 'company')
+  end
+
+  # Indentifies the first Address field on the Sign Up page
+  def customer_address1
+    @browser.input(:id, 'address1')
+  end
+
+  # Indentifies the second Address field on the Sign Up page
+  def customer_address2
+    @browser.input(:id, 'address2')
+  end
 end

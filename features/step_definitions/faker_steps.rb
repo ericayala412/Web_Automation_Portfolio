@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'faker'
 
 Given(/^the user goes to (.*)$/) do |site|
@@ -37,6 +38,10 @@ When(/^the user signs up with Faker values$/) do
     # will confirm that the email is present in the email field
     expect(page.customer_email.value).to eql email
     page.customer_password.send_keys Faker::Internet.password(min_length: 5)
+    page.date_of_birth
+    page.customer_company.send_keys Faker::Music::Phish.song + ' Inc.'
+    page.customer_address1.send_keys Faker::Address.street_address
+    page.customer_address2.send_keys Faker::Address.secondary_address
   end
 end
 
