@@ -46,9 +46,21 @@ class MyAccountPage
   # Years are 1900 - 2020
   def date_of_birth
     sleep 1 # Test goes to fast before selecting a dropdown item
-    @browser.div(:id, 'uniform-days').options.to_a.sample.select
-    @browser.div(:id, 'uniform-months').options.to_a.sample.select
-    @browser.div(:id, 'uniform-years').options.to_a.sample.select
+    # Deleting the '-' value from each array because it's invalid
+    days_options = @browser.div(:id, 'uniform-days').options.to_a
+    days_options.shift
+    days = days_options.sample
+    days.select
+
+    months_options = @browser.div(:id, 'uniform-months').options.to_a
+    months_options.shift
+    months = months_options.sample
+    months.select
+
+    years_options = @browser.div(:id, 'uniform-years').options.to_a
+    years_options.shift
+    years = years_options.sample
+    years.select
   end
 
   # Identifies the Company field on the Sign Up page
@@ -74,7 +86,11 @@ class MyAccountPage
   # Helper method that selects a random US state
   def customer_state
     sleep 1 # Test goes too fast before selecting a state
-    @browser.div(:id, 'uniform-id_state').options.to_a.sample.select
+    # Deleting the '-' value from each array because it's invalid
+    state_options = @browser.div(:id, 'uniform-id_state').options.to_a
+    state_options.shift
+    state = state_options.sample
+    state.select
   end
 
   # Identifies the zip code field on the Sign Up page
