@@ -19,10 +19,16 @@ Before do
   Faker::Config.locale = 'en-US'
 end
 
+# When adding the Cucumber tag '@german_locale' to a scenario, that scenario will use
+# German values to names, addresses, etc. For the full list please reference:
+# https://github.com/faker-ruby/faker/blob/master/lib/locales/de.yml
 Before ('@german_locale') do
   Faker::Config.locale = 'de'
 end
 
+# When adding the Cucumber tag '@german_locale' to a scenario, that scenario will use
+# Russian values in Cyrillic to names, addresses, etc. For the full list please reference:
+# https://github.com/faker-ruby/faker/blob/master/lib/locales/ru.yml
 Before ('@russian_locale') do
   Faker::Config.locale = 'ru'
 end
