@@ -19,6 +19,14 @@ Before do
   Faker::Config.locale = 'en-US'
 end
 
+Before ('@german_locale') do
+  Faker::Config.locale = 'de'
+end
+
+Before ('@russian_locale') do
+  Faker::Config.locale = 'ru'
+end
+
 After do
   @browser.quit
 end

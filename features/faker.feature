@@ -8,4 +8,4 @@ Feature: Using Faker to generate dynamic data
   Scenario: Sign up and create an account using Faker values
     Given the user goes to automationpractice.com's My Account page
     When the user signs up with Faker values
-    Then something
+    Then the user is signed in on the My Account page

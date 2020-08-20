@@ -32,8 +32,11 @@ When(/^the user signs up with Faker values$/) do
     # Completes the second portion of the Sign Up process where the user
     # enters their information and submits
     page.select_random_title
-    page.customer_first_name.send_keys Faker::Name.first_name_neutral
-    page.customer_last_name.send_keys Faker::Name.last_name
+    first_name = Faker::Name.first_name_neutral
+    last_name = Faker::Name.last_name
+    @full_name = "#{first_name} #{last_name}"
+    page.customer_first_name.send_keys first_name
+    page.customer_last_name.send_keys last_name
     # The email is pre-populated from the previous step. This assertion
     # will confirm that the email is present in the email field
     expect(page.customer_email.value).to eql email
@@ -52,6 +55,9 @@ When(/^the user signs up with Faker values$/) do
   end
 end
 
-Then(/^something$/) do
-  pending
+Then(/^the user is signed in on the My Account page$/) do
+  expect(@browser.text.include?("MY ACCOUNT")).to be true
+  expect(@browser.text.include?("Sign out")).to be true
+  # After signing up the user's full name will be displayed in the upper right hand corner of the page
+  expect(@browser.text.include?(@full_name)).to be true
 end
