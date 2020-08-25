@@ -8,17 +8,17 @@ people = []
 
 20.times do
   person = Hash.new
-  person["first_name"] = Faker::Name.first_name
-  person["last_name"] = Faker::Name.last_name
-  person["street_address"] = Faker::Address.street_address
-  person["city"] = Faker::Address.city
-  person["state"] = Faker::Address.state
-  person["phone_number"] = Faker::PhoneNumber.cell_phone
-  person["social_security_number"] = Faker::IDNumber.ssn_valid
+  person['first_name'] = Faker::Name.first_name
+  person['last_name'] = Faker::Name.last_name
+  person['street_address'] = Faker::Address.street_address
+  person['city'] = Faker::Address.city
+  person['state'] = Faker::Address.state
+  person['phone_number'] = Faker::PhoneNumber.cell_phone
+  person['social_security_number'] = Faker::IDNumber.ssn_valid
   people.push(person)
 end
 
 Dir.mkdir('./reports') unless File.exist?('reports')
-File.open("reports/temp.json","w") do |f|
+File.open('reports/temp.json', 'w') do |f|
   f.write(JSON.pretty_generate(people))
 end
