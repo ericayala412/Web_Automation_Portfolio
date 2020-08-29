@@ -5,6 +5,7 @@ Feature: Using Faker to generate dynamic data
     When the user submits a dynamic email with Faker
     Then the Forgot Password email will be set
 
+  #@japanese_locale
   Scenario: Sign up and create an account using Faker values
     Given the user goes to automationpractice.com's My Account page
     When the user signs up with Faker values

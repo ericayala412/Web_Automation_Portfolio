@@ -49,8 +49,9 @@ When(/^the user signs up with Faker values$/) do
     page.customer_state
     page.customer_zip.send_keys Faker::Address.zip_code(state_abbreviation: 'NC') # This site only accepts 5 digits zip codes
     page.additional_information.send_keys Faker::Movies::BackToTheFuture.quote
-    page.customer_home_phone.send_keys Faker::PhoneNumber.cell_phone_in_e164
-    page.customer_mobile_phone.send_keys Faker::PhoneNumber.cell_phone
+    phone_number = Faker::PhoneNumber.cell_phone
+    page.customer_home_phone.send_keys phone_number
+    page.customer_mobile_phone.send_keys phone_number
     page.register_button.click
   end
 end
