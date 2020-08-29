@@ -1,3 +1,4 @@
+@headless
 Feature: API Testing
 
   Scenario: Return a random beer from the Brew Dog API
