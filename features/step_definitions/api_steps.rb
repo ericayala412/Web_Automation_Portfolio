@@ -19,4 +19,14 @@ Then(/^the API will return a random beer$/) do
   end
 end
 
+When(/^the user requests all beers containing (.*) hops$/) do |hops|
+  @response = HTTParty.get("https://api.punkapi.com/v2/beers?ingredients&hops=#{hops}")
+end
 
+Then(/^the API will return the beer$/) do
+  data = @response.parsed_response
+  data.each do |item|
+    puts item["name"]
+    puts item["ingredients"]["hops"]
+  end
+end
