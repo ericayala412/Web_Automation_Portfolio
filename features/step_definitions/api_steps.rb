@@ -13,20 +13,20 @@ end
 Then(/^the API will return a random beer$/) do
   data = @response.parsed_response
   data.each do |item|
-    puts item["name"]
-    puts item["tagline"]
-    puts item["description"]
+    puts item['name']
+    puts item['tagline']
+    puts item['description']
   end
 end
 
 When(/^the user requests all beers containing (.*) hops$/) do |hops|
-  @response = HTTParty.get("https://api.punkapi.com/v2/beers?ingredients&hops=#{hops}")
+  @response = HTTParty.get("https://api.punkapi.com/v2/beers?ingredients&hops=#{hops}", format: :json)
 end
 
 Then(/^the API will return the beer$/) do
   data = @response.parsed_response
   data.each do |item|
-    puts item["name"]
-    puts item["ingredients"]["hops"]
+    puts item['name']
+    puts item['ingredients']['hops']
   end
 end
