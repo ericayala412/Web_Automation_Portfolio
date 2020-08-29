@@ -2,7 +2,16 @@ require 'page-object'
 require 'rubygems'
 require 'watir'
 
-Before do
+Before('@headless') do
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('headless')
+  options.add_argument('disable-dev-shm-usage')
+  options.add_argument('no-sandbox')
+  options.add_argument('window-size=1960x1440')
+  @browser = Watir::Browser.new :chrome, :options => options
+end
+
+Before('@chrome') do
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument('disable-dev-shm-usage')
   options.add_argument('no-sandbox')
@@ -22,21 +31,21 @@ end
 # When adding the Cucumber tag '@german_locale' to a scenario, that scenario will use
 # German values to names, addresses, etc. For the full list please reference:
 # https://github.com/faker-ruby/faker/blob/master/lib/locales/de.yml
-Before ('@german_locale') do
+Before('@german_locale') do
   Faker::Config.locale = 'de'
 end
 
 # When adding the Cucumber tag '@russian_locale' to a scenario, that scenario will use
 # Russian values in Cyrillic to names, addresses, etc. For the full list please reference:
 # https://github.com/faker-ruby/faker/blob/master/lib/locales/ru.yml
-Before ('@russian_locale') do
+Before('@russian_locale') do
   Faker::Config.locale = 'ru'
 end
 
 # When adding the Cucumber tag '@japanese_locale' to a scenario, that scenario will use
 # Japanese values in Kanji to names, addresses, etc. For the full list please reference:
 # https://github.com/faker-ruby/faker/blob/master/lib/locales/ja.yml
-Before ('@japanese_locale') do
+Before('@japanese_locale') do
   Faker::Config.locale = 'ja'
 end
 

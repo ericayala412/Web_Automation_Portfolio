@@ -1,3 +1,4 @@
+@chrome
 Feature: Using Faker to generate dynamic data
 
   Scenario: Generate an email address from Faker and submit the form
