@@ -19,7 +19,7 @@ In order to run this project it is recommended that you have [Homebrew](http://b
 Clone the repository, `cd` in to it, and install the required RubyGems:
 
 ```bash
-cd SignalPath_Coding_Assessment
+cd ruby_cucumber_example
 gem update --system
 gem install bundler
 bundle install
