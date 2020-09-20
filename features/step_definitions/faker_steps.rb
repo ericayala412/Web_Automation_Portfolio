@@ -7,6 +7,8 @@ Given(/^the user goes to (.*)$/) do |site|
     @browser.goto 'https://the-internet.herokuapp.com/forgot_password'
   when 'automationpractice.com\'s My Account page'
     @browser.goto 'http://automationpractice.com/index.php?controller=authentication&back=my-account'
+  when 'the Angular To-Do site'
+    @browser.goto 'http://todomvc.com/examples/angular2/'
   else
     raise 'Select a correct page destination from the case statement'
   end
