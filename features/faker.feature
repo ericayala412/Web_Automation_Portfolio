@@ -1,5 +1,8 @@
 @chrome
 Feature: Using Faker to generate dynamic data
+  As a user of automated test practice sites
+  I want to input data using Faker
+  So that I can enter dynamic randomized data when signing up
 
   Scenario: Generate an email address from Faker and submit the form
     Given the user goes to the Internet's Forgot Password page

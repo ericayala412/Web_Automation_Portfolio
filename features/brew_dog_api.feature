@@ -1,4 +1,7 @@
-Feature: Test API responses and return values
+Feature: Verify the functionality of the Brew Dog Punk API
+  As a user of the Brew Dog Punk API
+  I want to access data about Brew Dog's beers
+  So that I can make better decisions when selecting a beer
 
   Scenario: Return a random beer from the Brew Dog API
     Given Brew Dog's Punk API is running
