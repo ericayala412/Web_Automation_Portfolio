@@ -49,6 +49,6 @@ Before('@japanese_locale') do
   Faker::Config.locale = 'ja'
 end
 
-After do
+After('@chrome', '@headless') do
   @browser.quit
 end
