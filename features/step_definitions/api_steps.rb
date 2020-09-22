@@ -60,33 +60,3 @@ Then(/^I will print out the hourly forecast for (.*)$/) do |city|
   # the first character was capitalized in the description, so I downcased it below:
   puts "The hourly forecast for #{city} on #{time_in_est} is #{description.sub(description[0], description[0].downcase)} with a temperature of #{temperature} degrees with a wind speed of #{wind_speed} coming from the #{direction}."
 end
-
-Given(/^Brew Dog's Punk API is running$/) do
-  response = HTTParty.get('https://api.punkapi.com/v2/beers')
-  raise "The API call returned a bad response: #{response}" unless response.code.to_s == '200'
-end
-
-When(/^the user makes a get in (.*)$/) do |route|
-  @response = HTTParty.get("https://api.punkapi.com/v2/beers#{route}")
-end
-
-Then(/^the API will return a random beer$/) do
-  data = @response.parsed_response
-  data.each do |item|
-    puts item['name']
-    puts item['tagline']
-    puts item['description']
-  end
-end
-
-When(/^the user requests all beers containing (.*) hops$/) do |hops|
-  @response = HTTParty.get("https://api.punkapi.com/v2/beers?ingredients&hops=#{hops}", format: :json)
-end
-
-Then(/^the API will return the beer$/) do
-  data = @response.parsed_response
-  data.each do |item|
-    puts item['name']
-    puts item['ingredients']['hops']
-  end
-end
