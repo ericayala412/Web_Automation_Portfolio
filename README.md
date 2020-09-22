@@ -6,13 +6,13 @@ The project is broken up into different Cucumber feature files and some scripts,
 
 Additionally this project use the [Page Object Model](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/) to assist with scalability and as a maintenance best practices. 
 
-#####Front End Tests:
+##### Front End Tests:
 
 `angular_todo.feature`: This feature file covers different scenarios for an [Angular To-Do App](http://todomvc.com/examples/angular2/). 
 
 `faker.feature`: This feature file covers sign up tests for sample automation sites and uses Faker for dynamic data generation. Adding `@japanese_locale` or `@german_locale` as a scenario tag will run the test with Faker data from that locale.
 
-#####Back End End Tests and Scripts:
+##### Back End End Tests and Scripts:
 
 The API tests use a gem called [httparty](https://github.com/jnunemaker/httparty) to assist with API calls. Additionally [Geocoder](https://github.com/alexreisner/geocoder) is used to create latitude and longitude out of city names.
 
