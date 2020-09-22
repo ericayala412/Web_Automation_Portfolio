@@ -5,7 +5,7 @@ require 'active_support/time'
 
 Given(/^the National Weather Services API is running$/) do
   response = HTTParty.get('https://api.weather.gov', {
-      headers: {"User-Agent" => "Hourly Forecast Test, emast3@mail.rmu.edu"}
+      headers: {"User-Agent" => "Hourly Forecast Test, eric.ayala412@gmail.com"}
   })
   # Returns the response if the call fails for debugging:
   raise "The API call returned a bad response: #{response}" unless response.code.to_s == '200'
@@ -18,7 +18,7 @@ When(/^I get latitude and longitude for (.*)$/) do |city|
   # https://www.weather.gov/documentation/services-web-api
   coordinates = Geocoder.search(city).first.coordinates
   response = JSON.parse(HTTParty.get("https://api.weather.gov/points/#{coordinates.join(' ').gsub(' ',',')}", {
-      headers: {"User-Agent" => "Hourly Forecast Test, emast3@mail.rmu.edu"}
+      headers: {"User-Agent" => "Hourly Forecast Test, eric.ayala412@gmail.com"}
   }))
   # This API does not return information in the form of a Hash, so I am using JSON.parse
   # to return the hashes for the information I need for the gridID, gridX, and gridY
