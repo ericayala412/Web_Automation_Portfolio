@@ -29,7 +29,7 @@ end
 
 Then(/^I will print out the current forecast for (.*)$/) do |city|
   response = JSON.parse(HTTParty.get("https://api.weather.gov/gridpoints/#{@grid_id}/#{@grid_x},#{@grid_y}/forecast", {
-      headers: {"User-Agent" => "Hourly Forecast Test, emast3@mail.rmu.edu"}
+      headers: {"User-Agent" => "Hourly Forecast Test, eric.ayala412@gmail.com"}
   }))
   # This API does not return information in the form of a Hash, so I am using JSON.parse
   # to return the hashes for the information I need for the name of the time frame
@@ -44,7 +44,7 @@ end
 
 Then(/^I will print out the hourly forecast for (.*)$/) do |city|
   response = JSON.parse(HTTParty.get("https://api.weather.gov/gridpoints/#{@grid_id}/#{@grid_x},#{@grid_y}/forecast/hourly", {
-      headers: {"User-Agent" => "Hourly Forecast Test, emast3@mail.rmu.edu"}
+      headers: {"User-Agent" => "Hourly Forecast Test, eric.ayala412@gmail.com"}
   }))
   # This API does not return information in the form of a Hash, so I am using JSON.parse
   # to return the hashes for the information I need for the name of the time frame
