@@ -1,0 +1,4 @@
+--readme README.md
+--title 'Web Automation Portfolio Documentation'
+--charset utf-8
+'features/**/*.rb'
