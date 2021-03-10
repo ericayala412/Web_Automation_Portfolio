@@ -76,6 +76,7 @@ GEM
       thread_safe (~> 0.1)
     watir (6.3.0)
       selenium-webdriver (~> 3.0)
+    yard (0.9.25)
     yml_reader (0.7)
     zeitwerk (2.4.0)
 
@@ -96,6 +97,7 @@ DEPENDENCIES
   selenium-webdriver
   syntax
   watir (= 6.3.0)
+  yard
 
 BUNDLED WITH
    2.1.4
