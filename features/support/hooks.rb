@@ -49,15 +49,22 @@ Before('@japanese_locale') do
   Faker::Config.locale = 'ja'
 end
 
-After('@chrome') do |scenario|
-  if scenario.failed?
-    # Put the screenshot in the folder
-    screenshot = "./reports/failures/#{scenario.name.gsub(' ','_').gsub(/[^0-9A-Za-z_]/, '')}_#{Time.now}.png"
-    @browser.driver.save_screenshot(screenshot)
-  end
+After('@chrome') do
   @browser.quit
 end
 
 After('@headless') do
   @browser.quit
+end
+
+After do |scenario|
+  if scenario.failed?
+    # Create the directory if it doesn't exist and delete any
+    # previous .png files in the directory
+    Dir.mkdir('./reports/failures') unless File.exist?('./reports/failures')
+    Dir.glob('./reports/failures/*').select { |file| /png/.match file }.each { |file| File.delete(file) }
+    # Put the screenshot of the failed test in the folder
+    screenshot = "./reports/failures/#{scenario.name.gsub(' ','_').gsub(/[^0-9A-Za-z_]/, '')}_#{Time.now}.png"
+    @browser.driver.save_screenshot(screenshot)
+  end
 end
