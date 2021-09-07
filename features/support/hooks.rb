@@ -49,7 +49,12 @@ Before('@japanese_locale') do
   Faker::Config.locale = 'ja'
 end
 
-After('@chrome') do
+After('@chrome') do |scenario|
+  if scenario.failed?
+    # Put the screenshot in the folder
+    screenshot = "./reports/failures/#{scenario.name.gsub(' ','_').gsub(/[^0-9A-Za-z_]/, '')}_#{Time.now}.png"
+    @browser.driver.save_screenshot(screenshot)
+  end
   @browser.quit
 end
 
