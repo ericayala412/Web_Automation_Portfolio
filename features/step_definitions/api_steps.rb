@@ -34,6 +34,7 @@ Then(/^I will print out the current forecast for (.*)$/) do |city|
   # This API does not return information in the form of a Hash, so I am using JSON.parse
   # to return the hashes for the information I need for the name of the time frame
   # and the detailed forecast.
+  sleep(2) # sleeps to wait for API response
   time = response['properties']['periods'][0]['name']
   detailed = response['properties']['periods'][0]['detailedForecast']
   expect(time).not_to be_nil # fails the test if nothing is returns for the time
