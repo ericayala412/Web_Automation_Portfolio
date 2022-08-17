@@ -4,7 +4,7 @@ Feature: Using Faker to generate dynamic data
   I want to input data using Faker
   So that I can enter dynamic randomized data when signing up
 
-  # @failing
+  @failing
   # This test is expected to fail due an error on the Forgot Password site
   Scenario: Generate an email address from Faker and submit the form
     Given the user goes to the Internet's Forgot Password page
