@@ -1,3 +1,4 @@
+![Setup and run tests](https://github.com/ericayala412/Web_Automation_Portfolio/actions/workflows/ruby.yml/badge.svg)
 ## Web Automation Portfolio
 
 This project was originally created for a [tech talk](https://www.youtube.com/watch?v=yCkzHHV1Spw) I gave on [Faker](https://github.com/faker-ruby/faker) for creating dynamic data for test creation. Since then it has evolved into a portfolio of sorts to showcase some of my web automation skills. 
@@ -50,3 +51,11 @@ Tests can be ran using Cucumber commands, and all front end tests will be run in
 * To run a scenario in a feature enter: `bundle exec cucumber features/<FEATURE_NAME>.feature:<SCENARIO_LINE_NO>`
 
 * To run front end tests headless: change the `@chrome` tag at the top of any feature file to `@headless`
+
+#### Screenshots for failed tests
+
+When a test fails, a screen shot of the failure will be place in the `./reports/failures` folder. This helps with debugging failures by saving an image of the test in its failed state.
+
+#### Github Actions
+
+This project is setup to to run all passing tests whenever code is pushed to the `master` branch or a pull request is created. All tests that are known to be failing are labeled with `@failing` in their respective Cucumber scenarios.

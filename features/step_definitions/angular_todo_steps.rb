@@ -12,6 +12,7 @@ Then(/^the To-Do list will contain (.*)$/) do |items|
     # Takes all 3 items passed in (or any number) and splits them into an array
     # to use the assertion on any number of items passed in.
     items.split(', ').each do |item|
+      Watir::Wait.until { page.entry(item).exists? }
       expect(page.entry(item).exist?).to be true
     end
   end
